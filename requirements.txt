@@ -1,0 +1,7 @@
+pydantic>=1.10
+openai
+typing-extensions
+fastapi
+uvicorn
+numpy
+openenv

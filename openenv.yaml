@@ -1,0 +1,26 @@
+id: er-triage-sim
+name: Dynamic ER Triage Simulation (ESI-Based)
+description: |
+  Realistic emergency room triage simulation using the Emergency Severity Index (ESI). Simulates dynamic patient conditions, resource constraints, and multi-step decision-making. Agent must assign priorities, allocate resources, and manage patient deterioration.
+authors:
+  - Ujjwal Shreshtha
+  - OpenEnv Hackathon Team
+version: 1.0.0
+license: MIT
+entrypoint: env/environment.py
+observation_model: env.models.Observation
+action_model: env.models.Action
+reward_model: env.models.Reward
+tasks:
+  - tasks/easy.py
+  - tasks/medium.py
+  - tasks/hard.py
+python_version: ">=3.9,<3.12"
+dependencies:
+  - pydantic>=1.10
+  - openai
+  - typing-extensions
+  - fastapi
+  - uvicorn
+  - numpy
+  - openenv
