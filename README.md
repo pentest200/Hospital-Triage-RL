@@ -89,6 +89,7 @@ Steps: 12, Total Reward: 0.30, Grader Score: 0.714
 
 ## Authors
 - Ujjwal Shreshtha
+- Kumar Amityush
 
 ## License
 - MIT
