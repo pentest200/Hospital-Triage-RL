@@ -15,7 +15,7 @@ tasks:
   - tasks/easy.py
   - tasks/medium.py
   - tasks/hard.py
-python_version: ">=3.9,<3.12"
+python_version: ">=3.10,<3.12"
 dependencies:
   - pydantic>=2.0.0
   - openai

@@ -11,14 +11,15 @@ authors = [
   { name = "Kumar Amityush" }
 ]
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "pydantic>=2.0.0",
     "openai",
     "typing-extensions",
     "fastapi",
     "uvicorn[standard]",
-    "numpy"
+    "numpy",
+    "openenv-core>=0.2.0"
 ]
 
 [project.optional-dependencies]
@@ -27,7 +28,7 @@ dev = [
 ]
 
 [project.scripts]
-server = "server.app:app"
+server = "server.app:main"
 
 [tool.setuptools]
 packages = ["triage_env", "server", "tasks"]

@@ -24,8 +24,11 @@ def reset_env():
 def get_state():
     return env.state()
 
-if __name__ == "__main__":
+def main():
     import uvicorn
     # Hugging Face Spaces explicitly require port 7860
     port = int(os.environ.get("PORT", 7860))
     uvicorn.run(app, host="0.0.0.0", port=port)
+
+if __name__ == "__main__":
+    main()
