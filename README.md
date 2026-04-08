@@ -1,3 +1,12 @@
+---
+title: ER Triage Simulation
+emoji: 🚑
+colorFrom: red
+colorTo: blue
+sdk: docker
+tags:
+  - openenv
+---
 # Dynamic ER Triage Simulation Environment (ESI-Based)
 
 ## Overview
@@ -54,7 +63,15 @@ A production-grade OpenEnv environment simulating a real-world emergency room tr
    ```sh
    pip install -r requirements.txt  # or see openenv.yaml dependencies
    ```
-
+2. **Set your API Config:**
+   ```sh
+   export HF_TOKEN=sk-...
+   export MODEL_NAME=gpt-4o-mini
+   ```
+3. **Run baseline inference script:**
+   ```sh
+   python inference.py
+   ```
 4. **Docker:**
    ```sh
    docker build .
