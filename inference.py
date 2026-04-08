@@ -84,7 +84,7 @@ def run_task(make_env, grade_fn, desc, seed, task_name):
         obs, reward, done, info = env.step(action)
         
     score = grade_fn(env)
-    print(f"[END] Score/Reward: {score:.3f}\n")
+    print(f"[END] Score: {score:.4f}")
 
 def main():
     for name, make_env, grade_fn, desc in TASKS:

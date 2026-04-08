@@ -46,5 +46,5 @@ def grade_episode(patients: List[Patient], actions: Dict[int, int]) -> float:
         if assigned is not None:
             total += grade_action(p, assigned)
     raw_score = max(0.0, min(1.0, total / len(patients) if patients else 0.0))
-    # Scale to (0.01, 0.99) to satisfy "strictly between 0 and 1" requirement
-    return 0.01 + (raw_score * 0.98)
+    # Map [0, 1] -> [0.1, 0.9] to be strictly within (0, 1)
+    return (raw_score * 0.8) + 0.1
