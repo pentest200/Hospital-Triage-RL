@@ -17,9 +17,8 @@ dependencies = [
     "openai",
     "typing-extensions",
     "fastapi",
-    "uvicorn",
-    "numpy",
-    "openenv-core"
+    "uvicorn[standard]",
+    "numpy"
 ]
 
 [project.optional-dependencies]

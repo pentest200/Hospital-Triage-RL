@@ -2,7 +2,6 @@ pydantic>=2.0.0
 openai
 typing-extensions
 fastapi
-uvicorn
+uvicorn[standard]
 numpy
-openenv-core
 pytest
