@@ -1,6 +1,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.egg-info/
 .env
 .venv
 env/
@@ -8,7 +9,4 @@ venv/
 ENV/
 build/
 dist/
-*.egg-info/
-uv.lock
 .python-version
-.git/
