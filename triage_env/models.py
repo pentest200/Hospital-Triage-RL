@@ -1,5 +1,5 @@
 from typing import List, Optional, Literal, Dict, Any
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 class Vitals(BaseModel):
     heart_rate: int
@@ -52,5 +52,10 @@ class WaitAction(BaseModel):
 Action = AssignPriorityAction | ReassignPriorityAction | AllocateResourceAction | EscalatePatientAction | WaitAction
 
 class Reward(BaseModel):
-    value: float
+    value: float = Field(gt=0.0, lt=1.0)
     details: Dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator('value', mode='before')
+    @classmethod
+    def clamp_value(cls, v: float) -> float:
+        return max(0.01, min(0.99, float(v)))

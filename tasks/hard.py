@@ -26,4 +26,5 @@ HARD TASK:
 
 def grade(env: ERSimulationEnv):
     from triage_env.grader import grade_episode
-    return grade_episode(env.patients, env.assigned_priorities)
+    score = grade_episode(env.patients, env.assigned_priorities)
+    return max(0.01, min(0.99, score))
