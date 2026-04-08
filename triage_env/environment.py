@@ -42,7 +42,9 @@ class ERSimulationEnv:
         if self.timestep >= self.max_timesteps or all(self.assigned_priorities.get(p.patient_id) is not None for p in self.patients):
             self.done = True
         obs = self._get_observation()
-        return obs, Reward(value=reward, details=reward_details), self.done, {}
+        # Clamp reward strictly within (0, 1) for OpenEnv compliance
+        clamped_reward = max(0.01, min(0.99, (reward + 2.0) / 4.0))
+        return obs, Reward(value=clamped_reward, details=reward_details), self.done, {}
 
     def _calculate_reward(self, action: Action) -> Tuple[float, dict]:
         """Calculate reward for the given action and update patient state."""
