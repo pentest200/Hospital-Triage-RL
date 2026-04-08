@@ -23,4 +23,4 @@ dependencies:
   - fastapi
   - uvicorn
   - numpy
-  - openenv
+  - openenv-core

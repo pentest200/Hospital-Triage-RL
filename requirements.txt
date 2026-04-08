@@ -4,5 +4,5 @@ typing-extensions
 fastapi
 uvicorn
 numpy
-openenv
+openenv-core
 pytest
