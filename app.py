@@ -1,13 +1,15 @@
 import os
 from fastapi import FastAPI
-from triage_env.environment import ERSimulationEnv
+from tasks.easy import make_easy_env
 
 app = FastAPI()
-env = ERSimulationEnv()
+
+# Use the easy task factory to create a properly initialized environment
+env = make_easy_env(seed=42)
 
 @app.get("/")
 def root():
-    return {"status": "ok", "message": "OpenEnv ER Simulation is Running! 🚀"}
+    return {"status": "ok", "message": "OpenEnv ER Simulation is Running! 🚑"}
 
 @app.get("/reset")
 def get_reset():
@@ -16,8 +18,11 @@ def get_reset():
 @app.post("/reset")
 def reset_env():
     obs = env.reset()
-    # Pydantic V2 dump
     return obs.model_dump()
+
+@app.get("/state")
+def get_state():
+    return env.state()
 
 if __name__ == "__main__":
     import uvicorn
