@@ -42,8 +42,12 @@ class ERSimulationEnv:
         if self.timestep >= self.max_timesteps or all(self.assigned_priorities.get(p.patient_id) is not None for p in self.patients):
             self.done = True
         obs = self._get_observation()
-        # Clamp reward strictly within (0, 1) for OpenEnv compliance
-        clamped_reward = max(0.01, min(0.99, (reward + 2.0) / 4.0))
+        # Ensure total episodic reward sum never reaches 1.0 exactly
+        normalized_reward = (reward + 2.0) / 4.0  # Mapped roughly to [0, 1]
+        step_fraction = normalized_reward / (self.max_timesteps + 1.0)
+        
+        # Clamp strictly within (0, 1) for single step compliance
+        clamped_reward = max(0.01, min(0.99, step_fraction))
         return obs, Reward(value=clamped_reward, details=reward_details), self.done, {}
 
     def _calculate_reward(self, action: Action) -> Tuple[float, dict]:
@@ -164,6 +168,12 @@ class ERSimulationEnv:
             'assigned_priorities': self.assigned_priorities,
             'done': self.done
         }
+
+    def score(self) -> float:
+        """Return the final episodic score, bounded strictly in (0, 1) for OpenEnv."""
+        from .grader import grade_episode
+        raw_score = grade_episode(self.patients, self.assigned_priorities)
+        return float(max(0.2, min(0.8, raw_score)))
 
     def render(self) -> None:
         """Print a human-readable summary of the environment state."""
