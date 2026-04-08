@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "triage_env"
+version = "1.0.0"
+description = "A production-grade OpenEnv environment simulating a real-world emergency room triage using the Emergency Severity Index (ESI)."
+authors = [
+  { name = "Ujjwal Shreshtha" },
+  { name = "Kumar Amityush" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pydantic>=2.0.0",
+    "openai",
+    "typing-extensions",
+    "fastapi",
+    "uvicorn",
+    "numpy",
+    "openenv"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest"
+]

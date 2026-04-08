@@ -1,6 +1,6 @@
-from env.models import Vitals, Patient, HospitalResources
-from env.patient_generator import PatientGenerator
-from env.environment import ERSimulationEnv
+from triage_env.models import Vitals, Patient, HospitalResources
+from triage_env.patient_generator import PatientGenerator
+from triage_env.environment import ERSimulationEnv
 
 def make_medium_env(seed=43):
     gen = PatientGenerator(seed)
@@ -22,5 +22,5 @@ MEDIUM TASK:
 """
 
 def grade(env: ERSimulationEnv):
-    from env.grader import grade_episode
+    from triage_env.grader import grade_episode
     return grade_episode(env.patients, env.assigned_priorities)

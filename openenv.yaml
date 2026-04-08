@@ -7,17 +7,17 @@ authors:
   - OpenEnv Hackathon Team
 version: 1.0.0
 license: MIT
-entrypoint: env/environment.py
-observation_model: env.models.Observation
-action_model: env.models.Action
-reward_model: env.models.Reward
+entrypoint: triage_env/environment.py
+observation_model: triage_env.models.Observation
+action_model: triage_env.models.Action
+reward_model: triage_env.models.Reward
 tasks:
   - tasks/easy.py
   - tasks/medium.py
   - tasks/hard.py
 python_version: ">=3.9,<3.12"
 dependencies:
-  - pydantic>=1.10
+  - pydantic>=2.0.0
   - openai
   - typing-extensions
   - fastapi
