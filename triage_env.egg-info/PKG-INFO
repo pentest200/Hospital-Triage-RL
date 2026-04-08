@@ -1,3 +1,22 @@
+Metadata-Version: 2.4
+Name: triage_env
+Version: 1.0.0
+Summary: A production-grade OpenEnv environment simulating a real-world emergency room triage using the Emergency Severity Index (ESI).
+Author: Ujjwal Shreshtha, Kumar Amityush
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pydantic>=2.0.0
+Requires-Dist: openai
+Requires-Dist: typing-extensions
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: numpy
+Requires-Dist: openenv
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Dynamic: license-file
+
 # Dynamic ER Triage Simulation Environment (ESI-Based)
 
 ## Overview
@@ -54,7 +73,14 @@ A production-grade OpenEnv environment simulating a real-world emergency room tr
    ```sh
    pip install -r requirements.txt  # or see openenv.yaml dependencies
    ```
-
+2. **Set OpenAI API key:**
+   ```sh
+   export OPENAI_API_KEY=sk-...
+   ```
+3. **Run baseline:**
+   ```sh
+   python scripts/run_baseline.py
+   ```
 4. **Docker:**
    ```sh
    docker build .

@@ -156,8 +156,8 @@ class ERSimulationEnv:
     def state(self) -> Dict[str, Any]:
         """Return the internal state for reproducibility/debugging."""
         return {
-            'patients': [p.dict() for p in self.patients],
-            'resources': self.resources.dict(),
+            'patients': [p.model_dump() for p in self.patients],
+            'resources': self.resources.model_dump(),
             'timestep': self.timestep,
             'assigned_priorities': self.assigned_priorities,
             'done': self.done
@@ -167,6 +167,6 @@ class ERSimulationEnv:
         """Print a human-readable summary of the environment state."""
         print(f"\n--- Timestep {self.timestep} ---")
         for p in self.patients:
-            print(f"Patient {p.patient_id}: symptoms={p.symptoms}, vitals={p.vitals.dict()}, priority={p.current_priority}, risk={p.deterioration_risk_score:.2f}, deteriorated={p.deteriorated}, resources={p.allocated_resources}")
+            print(f"Patient {p.patient_id}: symptoms={p.symptoms}, vitals={p.vitals.model_dump()}, priority={p.current_priority}, risk={p.deterioration_risk_score:.2f}, deteriorated={p.deteriorated}, resources={p.allocated_resources}")
         print(f"Resources: ICU beds={self.resources.icu_beds}, Doctors={self.resources.doctors_available}")
         print(f"Done: {self.done}")
